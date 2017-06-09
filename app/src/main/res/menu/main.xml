@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/item_settings"
+        android:onClick="launchSettings"
+        />
+    <item
+        android:id="@+id/action_fetch_weather_latlng"
+        android:title="@string/item_fetch_weather_request_latlng"
+        android:onClick="fetchForecastUsingLatlng"
+        />
+    <item
+        android:id="@+id/action_fetch_weather_location"
+        android:title="@string/item_fetch_weather_forecast_using_location"
+        android:onClick="fetchForecastUsingLocation"
+        />
+</menu>

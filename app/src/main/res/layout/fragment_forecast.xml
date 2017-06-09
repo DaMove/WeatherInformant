@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             tools:context="com.abroscreative.weatherinformant.ui.ForecastFragment">
+
+    <LinearLayout
+        android:layout_gravity="top"
+        android:background="#c6b6b6"
+        android:visibility="visible"
+        android:id="@+id/linearLayoutTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="4dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:textSize="20sp"
+            android:id="@+id/tvTempMaxLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Max"/>
+
+        <TextView
+            android:textSize="20sp"
+            android:id="@+id/tvTempMinLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Min"/>
+
+        <TextView
+            android:textSize="20sp"
+            android:id="@+id/tvHumidityLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hum"/>
+
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/linearLayoutTitle"
+        android:background="@android:drawable/screen_background_dark_transparent"
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+
+</RelativeLayout>
