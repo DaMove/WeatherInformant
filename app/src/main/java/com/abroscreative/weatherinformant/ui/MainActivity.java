@@ -33,6 +33,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.abroscreative.weatherinformant.JSONParser;
 import com.abroscreative.weatherinformant.model.CurrentWeatherItem;
 import com.abroscreative.weatherinformant.model.ForecastDayItem;
 import com.abroscreative.weatherinformant.network.NetworkTaskUtils;
@@ -73,13 +74,13 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
             if (actionReturned.equals(ACTION_CURRENT)) {
                 Log.i("ACTION:","Current");
-                processCurrentResponseJSON(resultStr);
+                mCurrentWeatherItem = JSONParser.processCurrentResponseJSON(resultStr);
                 CurrentWeatherFragment currentWeatherFragment = CurrentWeatherFragment.newInstance(mCurrentWeatherItem);
                 showFragment(currentWeatherFragment);
 
             } else if (actionReturned.equals(ACTION_FORECAST)) {
                 Log.i("ACTION:","Forecast");
-                processForecastResponseJSON(resultStr);
+                mForecastDayItemList=JSONParser.processForecastResponseJSON(resultStr, mForecastDayItemList);
                 //mMainBinding.linearLayoutTitle.setVisibility(View.VISIBLE);
                 ForecastFragment forecastFragment = ForecastFragment.newInstance((ArrayList<ForecastDayItem>) mForecastDayItemList);
                 showFragment(forecastFragment);
@@ -129,53 +130,9 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
     }
 
-    public void processForecastResponseJSON(String responseString) {
-        try {
-            JSONObject jsonRootObject = new JSONObject(responseString);
-            JSONArray jsonList = jsonRootObject.getJSONArray("list");
 
-            //clearing the list in case there were items inside it already
-            if (!mForecastDayItemList.isEmpty()) {
-                mForecastDayItemList.clear();
-            }
-            for (int i = 0; i < jsonList.length(); i++) {
-                JSONObject eachJsonItem = jsonList.getJSONObject(i);
-                JSONObject eachMainSubItem = eachJsonItem.getJSONObject("main");
-                double maxTemp = eachMainSubItem.getDouble("temp_max");
-                double minTemp = eachMainSubItem.getDouble("temp_min");
-                int humidity = eachMainSubItem.getInt("humidity");
-                mForecastDayItemList.add(new ForecastDayItem(maxTemp, minTemp, humidity));
-            }
-//            mAdapter.notifyDataSetChanged();
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Log.e("ERROR_JSON", e.getMessage());
-        }
 
-    }
 
-    public void processCurrentResponseJSON(String responseString) {
-        try {
-            JSONObject jsonRootObject = new JSONObject(responseString);
-            JSONArray weather = jsonRootObject.getJSONArray("weather") ;
-            String description = weather.getJSONObject(0).getString("description");
-            String iconUrl = weather.getJSONObject(0).getString("icon");
-            JSONObject mainJSONObject = jsonRootObject.getJSONObject("main");
-            double temperature = mainJSONObject.getDouble("temp");
-            double pressure = mainJSONObject.getDouble("pressure");
-            double humidity = mainJSONObject.getDouble("humidity");
-            JSONObject sysJSONObject = jsonRootObject.getJSONObject("sys");
-            String country = sysJSONObject.getString("country");
-            String cityName = jsonRootObject.getString("name");
-            String location = cityName.concat(", ").concat(country);
-
-            mCurrentWeatherItem = new CurrentWeatherItem(iconUrl,temperature, humidity,pressure,description,location);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-    }
     @Override
     protected void onStart() {
         super.onStart();

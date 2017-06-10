@@ -50,7 +50,7 @@ public class CurrentWeatherFragment extends Fragment {
         mFragmentBinding.humidityValue.setText(mCurrentWeatherItem.getHumidity()+"");
         mFragmentBinding.locationLabel.setText(mCurrentWeatherItem.getLocation());
         mFragmentBinding.pressureValue.setText(mCurrentWeatherItem.getPressure()+"");
-        mFragmentBinding.temperatureValue.setText(mCurrentWeatherItem.getTemperature()+"");
+        mFragmentBinding.tvTemp.setText(mCurrentWeatherItem.getTemperature()+"");
         mFragmentBinding.descriptionValue.setText(mCurrentWeatherItem.getDescription());
 
         String iconId = mCurrentWeatherItem.getIcon()+".png";

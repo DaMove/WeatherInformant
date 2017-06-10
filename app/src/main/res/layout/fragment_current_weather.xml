@@ -14,7 +14,7 @@
 
 
     <TextView
-        android:id="@+id/temperatureValue"
+        android:id="@+id/tvTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -27,13 +27,13 @@
         android:layout_marginBottom="14dp"/>
 
     <ImageView
-        android:id="@+id/degreeImageView"
+        android:id="@+id/imgDegree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/temperatureValue"
+        android:layout_alignTop="@+id/tvTemp"
         android:layout_marginTop="50dp"
-        android:layout_toEndOf="@+id/temperatureValue"
-        android:layout_toRightOf="@+id/temperatureValue"
+        android:layout_toEndOf="@+id/tvTemp"
+        android:layout_toRightOf="@+id/tvTemp"
         android:src="@drawable/degree" />
 
     <TextView
@@ -44,14 +44,14 @@
         android:textStyle="bold|italic"
         android:textColor="#504b4b"
         android:id="@+id/tvTempUnit"
-        android:layout_below="@+id/degreeImageView"
-        android:layout_toRightOf="@+id/temperatureValue" />
+        android:layout_below="@+id/imgDegree"
+        android:layout_toRightOf="@+id/tvTemp" />
 
     <TextView
         android:id="@+id/timeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/temperatureValue"
+        android:layout_above="@+id/tvTemp"
         android:layout_centerHorizontal="true"
         android:text="---"
         android:textAppearance="?android:attr/textAppearanceSmall"

@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:drawable/screen_background_dark_transparent"
+                android:id="@+id/layout_container_widget"
+                android:padding="@dimen/widget_margin">
+
+    <TextView
+        android:id="@+id/appwidget_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/screen_background_dark_transparent"
+        android:contentDescription="@string/appwidget_text"
+        android:text="@string/appwidget_text"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/imgIcon"
+        android:layout_alignStart="@+id/imgIcon"/>
+
+    <ImageView
+        android:id="@+id/imgIcon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginStart="37dp"
+        android:src="@drawable/ic_launcher"
+        android:scaleType="fitXY"
+        android:layout_marginTop="64dp"
+        android:layout_below="@+id/appwidget_text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/tvTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="..."
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/white"
+        android:textSize="64sp"
+        android:layout_alignTop="@+id/imgIcon"
+        android:layout_toRightOf="@+id/imgIcon"
+        android:layout_toEndOf="@+id/imgIcon"/>
+
+    <ImageView
+        android:id="@+id/imgDegree"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/degree"
+        android:layout_alignTop="@+id/imgIcon"
+        android:layout_toRightOf="@+id/tvTemp"
+        android:layout_toEndOf="@+id/tvTemp"/>
+
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        android:layout_alignTop="@+id/imgDegree"
+        android:layout_toRightOf="@+id/imgDegree"
+        android:layout_toEndOf="@+id/imgDegree"/>
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:layout_below="@+id/imgDegree"
+        android:layout_toRightOf="@+id/imgDegree"
+        android:layout_toEndOf="@+id/imgDegree"/>
+
+    <TextView
+        android:id="@+id/tvHumidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="...%"
+        android:layout_alignBaseline="@+id/tvTemp"
+        android:layout_alignBottom="@+id/tvTemp"
+        android:layout_alignLeft="@+id/tvDesc"
+        android:layout_alignStart="@+id/tvDesc"/>
+
+</RelativeLayout>

@@ -36,6 +36,27 @@
             android:name=".network.WeatherDownloadService"
             android:exported="false">
         </service>
+
+        <receiver android:name=".widget.WeatherAppWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/weather_app_widget_info"/>
+        </receiver>
+
+        <activity android:name=".widget.WeatherAppWidgetConfigureActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".widget.WidgetUpdaterService"
+            android:exported="false">
+        </service>
     </application>
 
 </manifest>
